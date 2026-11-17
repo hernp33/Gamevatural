@@ -1,0 +1,337 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>Game Links</title>
+<style type="text/css">
+.auto-style1 {
+	font-family: Arial;
+	color: #00FF00;
+}
+.auto-style2 {
+	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+.auto-style6 {
+	color: #00FF00;
+}
+.auto-style7 {
+	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+	color: #0000FF;
+	border-right-style: solid;
+	border-right-width: 1px;
+}
+.auto-style4 {
+	font-family: Arial;
+	background-color: #0000FF;
+}
+.auto-style8 {
+	font-family: Arial;
+}
+.auto-style9 {
+	background-color: #00FF00;
+}
+.auto-style11 {
+	color: #00FF00;
+	background-color: #000000;
+}
+
+.game-finder {
+	margin: 24px auto;
+	padding: 18px;
+	max-width: 900px;
+	border: 1px solid #00ff00;
+	background-color: rgba(0, 0, 0, 0.72);
+	color: #ffffff;
+}
+
+.game-finder h2 {
+	margin-top: 0;
+	color: #00ff00;
+}
+
+.game-finder-controls {
+	display: flex;
+	gap: 10px;
+	flex-wrap: wrap;
+}
+
+.game-finder input,
+.game-finder select,
+.game-finder button {
+	padding: 10px;
+	border: 1px solid #00ff00;
+	font: inherit;
+}
+
+.game-finder input {
+	flex: 1 1 260px;
+}
+
+.game-finder select,
+.game-finder button {
+	background-color: #000000;
+	color: #00ff00;
+	cursor: pointer;
+}
+
+.game-finder-status {
+	margin-bottom: 0;
+	color: #ffffff;
+}
+
+.game-finder-empty {
+	color: #ffcc00;
+}
+
+@media screen and (max-width: 600px) {
+	.game-finder-controls {
+		display: block;
+	}
+
+	.game-finder input,
+	.game-finder select,
+	.game-finder button {
+		width: 100%;
+		margin-bottom: 8px;
+	}
+}
+</style>
+<script type="text/javascript">
+function setupGameFinder() {
+	var searchInput = document.getElementById('game-search');
+	var platformSelect = document.getElementById('game-platform');
+	var status = document.getElementById('game-finder-status');
+	var entries = [];
+	var currentPlatform = 'Android';
+	var children = document.body.children;
+	var collecting = false;
+
+	for (var i = 0; i < children.length; i++) {
+		var child = children[i];
+		var text = child.textContent.toLowerCase();
+
+		if (child.id === 'game-finder') {
+			collecting = true;
+			continue;
+		}
+		if (child.id === 'site-footer') {
+			break;
+		}
+		if (!collecting) {
+			continue;
+		}
+		if (text.indexOf('ps2 games') !== -1) {
+			currentPlatform = 'PS2';
+			continue;
+		}
+		if (text.indexOf('ps3 games') !== -1) {
+			currentPlatform = 'PS3';
+			continue;
+		}
+		if (child.tagName.toLowerCase() === 'p' && child.textContent.replace(/\s/g, '') !== '') {
+			child.setAttribute('data-platform', currentPlatform);
+			entries.push(child);
+		}
+	}
+
+	function updateResults() {
+		var query = searchInput.value.toLowerCase().replace(/^\s+|\s+$/g, '');
+		var platform = platformSelect.value;
+		var visible = 0;
+
+		for (var i = 0; i < entries.length; i++) {
+			var entry = entries[i];
+			var matchesText = entry.textContent.toLowerCase().indexOf(query) !== -1;
+			var matchesPlatform = platform === 'all' || entry.getAttribute('data-platform') === platform;
+			var showEntry = matchesText && matchesPlatform;
+
+			entry.style.display = showEntry ? '' : 'none';
+			if (showEntry) {
+				visible++;
+			}
+		}
+
+		status.textContent = visible + ' game entries found';
+		status.className = 'game-finder-status' + (visible === 0 ? ' game-finder-empty' : '');
+	}
+
+	searchInput.oninput = updateResults;
+	platformSelect.onchange = updateResults;
+	document.getElementById('game-reset').onclick = function () {
+		searchInput.value = '';
+		platformSelect.value = 'all';
+		updateResults();
+	};
+	updateResults();
+}
+window.onload = setupGameFinder;
+</script>
+</head>
+
+<body style="background-color: #0000FF; background-image: url('gog%20fode/HD-wallpaper-astros-playroom-2020-astro-controller-dual-playstion-ps5-sense.jpg');">
+
+<table align="center" cellpadding="0" cellspacing="0" style="width: 99%">
+	<tr>
+		<td style="width: 338px">
+		<strong>
+		<img alt="" height="88%" src="gog%20fode/8620362.jpg" width="254" /></strong></td>
+		<td style="width: 148px">
+		<h1 class="auto-style1"><strong>Game Vatural</strong></h1>
+		</td>
+		<td class="auto-style2" style="width: 70px"><strong><a href="Home.html">
+		<span class="auto-style6">Home Page</span></a></strong></td>
+		<td class="auto-style2" style="width: 78px"><strong>
+		<a href="gallery.html">Gallery</a></strong></td>
+		<td class="auto-style2" style="width: 153px"><strong>
+		<a href="gaming_updates.html">Gaming Updates</a></strong></td>
+		<td class="auto-style2" style="width: 86px"><strong>
+		<a href="contact_us.html">Contact Us</a></strong></td>
+		<td class="auto-style7"><strong><a href="game_links.html">Game Links</a>&nbsp;
+		</strong></td>
+	</tr>
+</table>
+
+<p>
+&nbsp;<strong><marquee class="auto-style4">Aplace for all game links
+</marquee></strong></p>
+
+<section class="game-finder" id="game-finder">
+	<h2>Find a Game</h2>
+	<div class="game-finder-controls">
+		<input id="game-search" type="search" placeholder="Search by game name..." />
+		<select id="game-platform" title="Filter games by platform">
+			<option value="all">All platforms</option>
+			<option value="Android">Android</option>
+			<option value="PS2">PS2 for Android</option>
+			<option value="PS3">PS3 for Android</option>
+		</select>
+		<button id="game-reset" type="button">Reset</button>
+	</div>
+	<p class="game-finder-status" id="game-finder-status" aria-live="polite"></p>
+</section>
+
+<h2><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class="auto-style8">ANDRIOD</span></strong></h2>
+<p><strong><span class="auto-style9">Morden combat 3: </span> <a href="https://selar.com/v1gf816l31">
+<span class="auto-style9">DOWNLOAD</span></a><span class="auto-style9">andriod</span></strong></p>
+<p><strong><span class="auto-style9">Modern combat 4 </span> <a href="https://selar.com/q881111292">
+<span class="auto-style9">DOWNLOAD</span></a><span class="auto-style9">andriod</span></strong></p>
+<p><strong><span class="auto-style9">Call of duty modern warfare: </span> <a href="https://selar.com/va8a01qb74">
+<span class="auto-style9">DOWNLOAD</span></a><span class="auto-style9">andriod</span></strong></p>
+<p><strong><span class="auto-style9">Need for speed most wanted: </span> <a href="https://selar.com/2mn88792c5">
+<span class="auto-style9">DOWNLOAD</span></a><span class="auto-style9">andriod</span></strong></p>
+<p><strong><span class="auto-style9">Spider man 2: </span> <a href="https://selar.com/s22g751t01">
+<span class="auto-style9">DOWNLOAD</span></a><span class="auto-style9">andriod</span></strong></p>
+<p><strong><span class="auto-style9">GTA V: 
+<a href="https://selar.com/5pv1113177">DOWNLOAD</a>andriod use winlator</span></strong></p>
+<p><strong><span class="auto-style9">GTA- san andreas: 
+<a href="https://selar.com/u9w0h4xz64">DOWNLOAD</a></span></strong></p>
+<p><strong><span class="auto-style9">FC 2O24: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">FC 2025:DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">FC 2026 MOD 14:
+<a href="https://selar.com/57guq18k5n">OBB&nbsp; </a>&nbsp;
+<a href="https://selar.com/6606v83o28">APK&nbsp;&nbsp; </a>&nbsp;
+<a href="https://selar.com/kc60pt8um4">DATA</a></span></strong></p>
+<p><strong><span class="auto-style9">FC 2026: </span></strong></p>
+<p><strong><span class="auto-style11">That was just a begining</span></strong></p>
+<p><span class="auto-style11"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</strong>
+</span> <strong><span class="auto-style11">PS2 GAMES ANDRIOD</span></strong><span class="auto-style9"><strong>&nbsp;</strong></span></p>
+<p><strong><span class="auto-style9">Use this emulator to play them on andriod call for more information: 
+</span>
+<a href="https://drive.google.com/file/d/144YY8RpcuZj8UzecXMxlVr3NfFSRsZLO/view?usp=sharing">
+<span class="auto-style9">DOWNLOAD EMULATOR</span></a></strong></p>
+<p><strong><span class="auto-style9">Resdent evil 4: 
+<a href="https://selar.com/2136663l56">DOWNLOAD</a></span></strong></p>
+<p><strong><span class="auto-style9">Downhill: 
+<a href="https://selar.com/lz1jx74333">DOWNLOAD</a></span></strong></p>
+<p><strong><span class="auto-style9">Need for speed-underground 2: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Dragon ball Z-dodukai tenkaichi 3: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Tekken 5: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Godhand: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Motalcombat: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Naruto shippuden-ultimate ninja 3: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Def jam: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Gran turismo 4: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Shadow of the colossus: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Bully: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">efootball 2026: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Mid night club: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Dragon ball Z-dodukai tenkaichi 4: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">GTA-vice city: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Devil may cry3: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Burn out3-takedown: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Mortal combat-armagedon: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Dantes inferno: DOWNLOAD </span></strong></p>
+<p><strong><span class="auto-style11">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+PS3 GAMES ANDRIOD</span></strong></p>
+<p class="auto-style8"><strong><span class="auto-style9">Play the games using 
+dolphine emulator for more information call 0772328062:
+<a href="https://drive.google.com/file/d/1PLVLTeqEcmXO4_6eNwejUaPdfU8JlneQ/view?usp=sharing">
+DOWNLOAD EMULATOR</a></span></strong></p>
+<p><strong><span class="auto-style9">Call of duty modern warfare: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Call of duty black ops 1: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Dragon ball Z-dodukai tenkaichi 3: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Reident evil 4: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">The legend of zelda: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">WWE 13: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Ben 10 omnivers: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Spider man shattered dimentions: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Sonic unleashed: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Xenoblade chronicles: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Lego Batman 2: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Resident evil-the dark side chronicles: 
+DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Sengoku basara 3-ultage: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Lego star wars: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Metrioad other M: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Bully: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Resident evil the umbrella chronicles: 
+DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Monster hunters: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">The last story: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Resident evil-archives: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Need for speed pro street: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">The amaizing spiderman: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Star wars-the force unleashed</span></strong></p>
+<p><strong><span class="auto-style9">Golden eye007: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Tomb raider--under world: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Spiderman edge of time: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Sengoku Basara-samurai hereos: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">House of the dead:: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Silent hill: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Dead space: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Call of duty black ops 2: DOWNLOAD Use this 
+emulator to play it:<a href="https://drive.google.com/file/d/1LpZI6YJm4vas6g3B1oqiDzwj1ehNocY5/view?usp=sharing"> 
+DOWNLOAD</a></span></strong></p>
+<p><strong><span class="auto-style9">Prince of persia-the forgotten sands: 
+DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Spider man 3: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Lego hary potter: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Lego star wars: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Cars 2: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Transformers: DOWNLOAD</span></strong></p>
+<p><strong><span class="auto-style9">Need for speed-the run: DOWNLOAD</span></strong></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</body>
+</html>
